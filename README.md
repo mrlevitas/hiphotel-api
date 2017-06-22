@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+Using Ruby 2.3.1 & Rails 5.0.1 api only version
 
 * Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- set to listen on port 8000
+- for quickest setup:
+  $ gem install bundler
+  $ bundle install
+  $ bundle exec rails server
