@@ -7,13 +7,17 @@ class HotelSearchController < ApplicationController
 
   def index
     json_results = []
+    threads = []
     request_uri = 'http://localhost:9000/scrapers/'
 
     endpoints = PROVIDERS.map { |e| request_uri + e  }
 
     endpoints.each do |url|
-      json_results << JSON.parse( open(url).read )['results']
+      threads << Thread.new do
+          json_results << JSON.parse( open(URI.parse(url)).read )['results']
+      end
     end
+    threads.each { |t| t.join }
 
     merged_arr = merge_sorted_arrays(json_results)
 
